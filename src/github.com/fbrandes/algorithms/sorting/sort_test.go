@@ -2,6 +2,7 @@ package sorting
 
 import (
 	"testing"
+	"github.com/stretchr/testify/assert"
 )
 
 // Test values
@@ -23,110 +24,76 @@ var sortTests = []struct {
 func TestBubbleSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := BubbleSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("BubbleSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("BubbleSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "BubbleSort: expected %d, actual %d")
 	}
 }
 
 func TestMergeSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := MergeSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("MergeSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("MergeSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "MergeSort: expected %d, actual %d")
 	}
 }
 
 func TestQuickSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := QuickSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("QuickSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("QuickSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "QuickSort: expected %d, actual %d")
 	}
 }
 
 func TestInsertionSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := InsertionSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("InsertionSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("InsertionSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "InsertionSort: expected %d, actual %d")
 	}
 }
 
 func TestSelectionSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := SelectionSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("SelectionSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("SelectionSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "SelectionSort: expected %d, actual %d")
 	}
 }
 
 func TestHeapSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := HeapSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("HeapSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("HeapSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "HeapSort: expected %d, actual %d")
 	}
 }
 
 func TestRadixSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := RadixSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("RadixSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("RadixSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "RadixSort: expected %d, actual %d")
 	}
 }
 
 func TestShellSort(t *testing.T) {
 	for _, tt := range sortTests {
 		actual := ShellSort(tt.values)
-		if !checkAccuracy(actual, tt.expected) {
-			t.Errorf("ShellSort: expected %d, actual %d", tt.expected, actual)
-		}
-		t.Logf("ShellSort: expected %d, actual %d", tt.expected, actual)
+		assert.Equal(t, actual, tt.expected, "ShellSort: expected %d, actual %d")
 	}
 }
 
-// Assertion Helpers
-func checkAccuracy(source []int, result []int) bool {
-	return (len(source) == len(result)) && allValuesPresent(source, result) && isOrderd(result)
+func TestCountingSort(t *testing.T) {
+	for _, tt := range sortTests {
+		actual := CountingSort(tt.values)
+		assert.Equal(t, actual, tt.expected, "CountingSort: expected %d, actual %d")
+	}
 }
 
-func isOrderd(a []int) bool {
-	for i := 0; i < len(a)-1; i++ {
-		if !(a[i] <= a[i+1]) {
-			return false
-		}
+func TestBucketSort(t *testing.T) {
+	for _, tt := range sortTests {
+		actual := BucketSort(tt.values)
+		assert.Equal(t, actual, tt.expected, "BucketSort: expected %d, actual %d")
 	}
-	return true
-}
-func allValuesPresent(source []int, result []int) bool {
-	for i := 0; i < len(source); i++ {
-		if !(contains(result, source[i])) {
-			return false
-		}
-	}
-	return true
 }
 
-func contains(s []int, e int) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
+func TestCombSort(t *testing.T) {
+	for _, tt := range sortTests {
+		actual := CombSort(tt.values)
+		assert.Equal(t, actual, tt.expected, "CombSort: expected %d, actual %d")
 	}
-	return false
 }

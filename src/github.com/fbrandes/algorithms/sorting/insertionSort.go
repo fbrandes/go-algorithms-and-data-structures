@@ -16,3 +16,16 @@ func insertionSort(a []int) []int {
 	}
 	return a
 }
+
+func InsertionSort2(a []int, left, right int) []int {
+	for i:=left+1; i<=right;i++ {
+		temp:=a[i]
+		j:=i-1
+		for a[j] > temp && j >= left {
+			a[j+1] = a[j]
+			j--
+		}
+		a[j+1] = temp
+	}
+	return a
+}

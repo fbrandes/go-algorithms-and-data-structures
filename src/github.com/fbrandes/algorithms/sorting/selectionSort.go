@@ -1,5 +1,7 @@
 package sorting
 
+import "github.com/fbrandes/util"
+
 func SelectionSort(a []int) []int {
 	return selectionSort(a)
 }
@@ -12,7 +14,7 @@ func selectionSort(a []int) []int {
 				min = j
 			}
 		}
-		swap(a, i, min)
+		util.Swap(a, i, min)
 	}
 	return a
 }

@@ -1,5 +1,7 @@
 package sorting
 
+import "github.com/fbrandes/util"
+
 func QuickSort(a []int) []int {
 	return quickSort(a, 0, len(a)-1)
 }
@@ -19,9 +21,9 @@ func partition(a []int, left, right int) int{
 	for j:=left;j<=right-1; j++{
 		if a[j] < pivot {
 			i++
-			swap(a, i, j)
+			util.Swap(a, i, j)
 		}
 	}
-	swap(a, i+1, right)
+	util.Swap(a, i+1, right)
 	return i+1
 }

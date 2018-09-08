@@ -1,5 +1,7 @@
 package sorting
 
+import "github.com/fbrandes/util"
+
 const BASE = 10
 const SIGNIFICANTDIGIT = 1
 
@@ -21,7 +23,7 @@ func divide(a []int) ([]int, []int) {
 }
 
 func radixSort(a []int) []int {
-	largestNum := getMax(a)
+	largestNum := util.GetMax(a)
 	significantDigit := SIGNIFICANTDIGIT
 	helper := make([]int, len(a), len(a))
 
